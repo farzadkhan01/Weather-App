@@ -1,0 +1,358 @@
+/* ===== RESET & GLOBAL STYLES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-weight: 400;
+    outline: var(--iconHover)
+}
+
+:root {
+    --iconHover: #742bec;
+    --sections-background: #0e1421;
+    --navIcons: #676b73;
+    --transition: all 0.3s;
+    --grid-gap: 30px;
+    --section-h3: 44px;
+    --section-margin: 48px;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    background-color: #0b0f19;
+    color: #fff;
+    min-height: 100vh;
+}
+
+ul {
+    padding: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.dashboard {
+    padding: 2rem;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 7rem repeat(5, 1fr);
+    grid-template-rows: repeat(6, 3.5rem);
+    grid-template-areas:
+        "   aside       search          search          .               .        user        "
+        "   aside       today           today           today           weather      weather      "
+        "   aside       today           today           today           weather      weather      "
+        "   aside       today           today           today           weather      weather      "
+        "   aside       today           today           today           weather      weather      "
+        "   aside       highlights      highlights      highlights      weather      weather      "
+        "   aside       highlights      highlights      highlights      cities       cities     "
+        "   aside       highlights      highlights      highlights      cities       cities     "
+    ;
+    gap: var(--grid-gap);
+    position: relative;
+
+}
+
+/* ==================================================== */
+
+.search,
+#User,
+#current__city,
+#highlights,
+#weekdays,
+#otherCities {
+    background-color: var(--sections-background);
+    border-radius: 30px;
+}
+
+#current__city,
+#highlights,
+#weekdays,
+#otherCities {
+    padding: 2rem 2rem;
+}
+
+.search {
+    grid-area: search;
+    width: calc(100% - 12rem);
+}
+
+#User {
+    grid-area: user;
+}
+
+#current__city {
+    grid-area: today;
+}
+
+#highlights {
+    grid-area: highlights;
+}
+
+#weekdays {
+    grid-area: weather;
+}
+
+#otherCities {
+    grid-area: cities;
+    background-color: transparent;
+    padding: 0;
+
+}
+
+.img-review .feels-like {
+    display: none;
+}
+
+aside {
+    grid-area: aside;
+    display: grid;
+    grid-template-rows: auto;
+    text-align: center;
+    background-color: var(--sections-background);
+    border-radius: 26px;
+    padding: 25px 20px;
+
+    height: calc(100vh - 63px);
+    position: fixed;
+    top: 25px;
+}
+
+.menu {
+    justify-content: center;
+}
+
+.logo a h6 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.menu ul li {
+    margin: 31px 0;
+}
+
+.menu ul li a {
+    font-size: 36px;
+    color: var(--navIcons);
+    transition: var(--transition);
+}
+
+.menu ul li a:hover {
+    color: var(--iconHover);
+}
+
+.themeChanger {
+    align-self: end;
+}
+
+/* ======================================== */
+.searchBar,
+.user-changer {
+    align-items: center;
+    background-color: transparent;
+}
+
+.searchBar i {
+
+    margin-left: 30px;
+    font-size: 24px;
+}
+
+
+.searchBar input {
+    background: none;
+    border: none;
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    margin-left: 21px;
+    color: white;
+}
+
+/* ======================================== */
+
+.user-changer {
+    padding: 0 24px 0 10px;
+}
+
+.user-changer:hover {
+    cursor: pointer;
+
+}
+
+.user-changer .fa-user {
+    color: var(--iconHover);
+    width: 35px;
+    height: 35px;
+    align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    border: 2px solid;
+    margin-right: 18px;
+    transition: var(--transition);
+}
+
+.user-changer .fa-user:hover {
+    background-color: var(--iconHover);
+    border-color: var(--iconHover);
+    color: #fff;
+
+}
+
+.user-changer h6 {
+    margin: 0;
+}
+
+.user-changer .fa-sort-down {
+    margin-top: -8px;
+    transition: var(--transition);
+}
+
+.user-changer .fa-sort-down:hover {
+    color: var(--iconHover);
+}
+
+/* ======================================== */
+
+.location {
+    background-color: var(--iconHover);
+    width: 10rem;
+    padding: 13px;
+
+}
+
+.location i {
+    font-size: 26px;
+}
+
+.location h6 {
+    padding-left: 8px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+/* ======================================== */
+.today-info {
+    display: flex;
+    align-items: center;
+    gap: var(--grid-gap);
+    margin-top: var(--section-margin);
+
+}
+
+.info-content h3 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.info-content h5 {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.feels-like img {
+    width: 100%;
+    height: 100%;
+}
+
+/* ======================================== */
+#highlights {
+    position: relative;
+}
+
+.section-title h3::before {
+    content: '';
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    width: 0;
+    height: 3px;
+    border-radius: 15px;
+    background-color: var(--iconHover);
+    transition: var(--transition);
+}
+
+#highlights:hover .section-title h3::before,
+#weekdays:hover .section-title h3::before,
+#otherCities:hover .section-title h3::before {
+    width: calc(100% + 5px);
+}
+
+
+.section-title h3 {
+    position: relative;
+    width: fit-content;
+    margin: 0;
+    font-size: var(--section-h3);
+}
+
+.hourly {
+    margin-top: var(--section-margin);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 132px);
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--grid-gap);
+}
+
+.hour-card {
+    border: 2px solid var(--navIcons);
+    padding: 12px 12px;
+    border-radius: 15px;
+    transition: var(--transition);
+}
+
+.hour-card:hover {
+    border-color: var(--iconHover);
+}
+
+.hour-card img {
+    width: 100%;
+    height: 100%;
+    margin: 20px 0px;
+}
+
+/* ======================================== */
+
+
+/* ======================================== */
+#otherCities {
+    padding: 0;
+}
+
+#otherCities .section-title {
+    margin-bottom: var(--section-margin);
+
+}
+
+.city-weather {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 315px);
+    gap: var(--grid-gap);
+}
+
+.city-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--sections-background);
+    padding: 1.3rem;
+    border-radius: 15px;
+}
+
+.city-img img {
+    width: 4rem;
+    height: 100%;
+}

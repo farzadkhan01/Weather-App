@@ -1,0 +1,298 @@
+@media (max-width: 1350px) {
+    .info-content h3 {
+        font-size: 36px;
+    }
+
+    .search {
+        grid-area: search;
+        width: calc(100% - 0rem);
+    }
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --section-h3: 38px;
+    }
+
+    .section-title h3 {
+        font-size: var(--section-h3);
+    }
+
+    .dashboard {
+        grid-template-areas:
+            "   aside       search          search          .               user        user        "
+            "   aside       today           today           today           weather     weather      "
+            "   aside       today           today           today           weather     weather      "
+            "   aside       today           today           today           weather     weather      "
+            "   aside       today           today           today           weather     weather      "
+            "   aside       highlights      highlights      highlights      cities      cities      "
+            "   aside       highlights      highlights      highlights      cities      cities     "
+            "   aside       highlights      highlights      highlights      cities      cities     "
+        ;
+    }
+
+    .displaying {
+        display: none;
+    }
+
+    .img-review {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+
+    }
+
+    .img-review .feels-like {
+        display: block;
+    }
+
+    .img-review .feels-like img {
+        width: 7rem;
+    }
+
+    .today-info {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 992px) {
+    :root {
+        --iconHover: #742bec;
+        --sections-background: #0e1421;
+        --navIcons: #676b73;
+        --transition: all 0.3s;
+        --grid-gap: 30px;
+        --section-h3: 34px;
+        --section-margin: 48px;
+    }
+
+    .section-title h3 {
+        font-size: var(--section-h3);
+    }
+
+    .dashboard {
+        grid-template-areas:
+            "   aside       search          search          .               user            user        "
+            "   aside       today           today           today           today           today     "
+            "   aside       today           today           today           today           today      "
+            "   aside       today           today           today           today           today      "
+            "   aside       today           today           today           today           today      "
+            "   aside       weather         weather         weather         weather         weather      "
+            "   aside       weather         weather         weather         weather         weather      "
+            "   aside       highlights      highlights      highlights      cities          cities     "
+        ;
+    }
+
+    .hourly {
+        grid-template-columns: repeat(auto-fill, 62px);
+    }
+
+    .hour-card h3 {
+        font-size: 14px;
+    }
+
+    .city-weather {
+        grid-template-columns: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --grid-gap: 15px;
+        --section-h3: 34px;
+        --section-margin: 23px;
+    }
+
+    .dashboard {
+        grid-template-areas:
+            "   aside       search          search          search            user            user        "
+            "   aside       today           today           today           today           today      "
+            "   aside       today           today           today           today           today      "
+            "   aside       today           today           today           today           today      "
+            "   aside       today           today           today           today           today      "
+            "   aside       weather         weather         weather         weather         weather      "
+            "   aside       weather         weather         weather         weather         weather      "
+            "   aside       weather         weather         weather         weather         weather      "
+            "   aside       highlights      highlights      highlights      highlights      highlights     "
+            "   aside       highlights      highlights      highlights      highlights      highlights     "
+            "   aside       cities          cities          cities          cities          cities     "
+            "   aside       cities          cities          cities          cities          cities     "
+        ;
+    }
+
+    aside {
+        padding: 20px 15px;
+    }
+
+    .menu ul li a {
+        font-size: 26px;
+    }
+
+    .searchBar i {
+        margin-left: 15px;
+        font-size: 16px;
+    }
+
+    .searchBar input {
+        margin-left: 14px;
+    }
+
+    .info-content h3 {
+        font-size: 28px;
+    }
+
+    .user-changer .fa-user {
+        width: 25px;
+        height: 25px;
+        margin-right: 10px;
+        font-size: 12px;
+    }
+
+    .user-changer h6 {
+        font-size: 12px;
+    }
+
+    .user-changer .fa-sort-down {
+        margin-top: -5px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 576px) {
+
+
+    .dashboard {
+        display: flex;
+        flex-direction: column;
+
+        padding: 2rem;
+        height: 100%;
+        grid-template-columns: 0 repeat(5, 1fr);
+        grid-template-rows: repeat(6, 3.5rem);
+        grid-template-areas:
+            " search        search     search       search      search "
+            " today         today      today        today       weather"
+            " today         today      today        today       weather"
+            " highlights    highlights highlights   cities      cities "
+            " highlights    highlights highlights   cities      cities "
+            " highlights    highlights highlights   cities      cities ";
+        gap: var(--grid-gap);
+        position: relative;
+    }
+
+    #User {
+        display: none;
+    }
+
+    aside {
+        grid-area: aside;
+        /* display: grid; */
+        display: none;
+        grid-template-rows: auto;
+        text-align: center;
+        background-color: var(--sections-background);
+        border-radius: 26px;
+        padding: 25px 20px;
+        height: calc(100vh - 63px);
+        position: fixed;
+        top: 25px;
+    }
+
+    #Toggle {
+        display: flex !important;
+    }
+
+
+    .toogle {
+        padding: 2rem 2rem var(--grid-gap) 3rem;
+    }
+
+    .toggle-bar a,
+    .small-user-icon {
+        font-size: 24px;
+        background-color: #0e1421;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    .small-user-icon {
+        margin-right: var(--grid-gap);
+    }
+
+    .small-user-icon i {
+        margin-right: 0 !important;
+        width: 35px !important;
+        height: 35px !important;
+        font-size: 18px !important;
+    }
+
+    .searchBar input {
+        margin-left: 14px;
+        padding: 1rem 0;
+    }
+}
+
+
+@media (max-width: 425px) {
+    :root {
+        --grid-gap: 20px;
+    }
+
+    .toogle {
+        padding: 1rem 1rem 0 1rem;
+    }
+
+    .dashboard {
+        padding: 1rem;
+    }
+
+    #current__city,
+    #highlights,
+    #weekdays,
+    #otherCities {
+        padding: 1rem 1rem;
+    }
+
+
+    .img-review {
+        flex-direction: column;
+    }
+
+    .img-review .feels-like {
+        width: 100%;
+        text-align: end;
+    }
+
+    .today-info {
+        flex-direction: column;
+        align-items: start;
+        justify-content: start;
+        gap: 20px;
+    }
+
+    .location {
+        background-color: var(--iconHover);
+        width: 100%;
+        padding: 8px;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .location i {
+        font-size: 18px;
+    }
+
+    .info-content h3 {
+        font-size: 24px;
+        margin-bottom: 5px;
+
+    }
+
+    .info-content h5 {
+        font-size: 16px;
+        font-weight: 400;
+        margin: 0;
+    }
+}
+
+/* ====================================================== */
