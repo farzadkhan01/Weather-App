@@ -225,7 +225,7 @@ aside {
 
 .location {
     background-color: var(--iconHover);
-    width: 10rem;
+    width: max-content;
     padding: 13px;
 
 }
