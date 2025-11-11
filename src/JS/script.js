@@ -7,7 +7,7 @@ class appBluePrint {
         this.coords = null;
         this.weatherData = {};
         this.#currentDate()
-
+        this.init()
     }
 
     async getCurrentLocation() {
@@ -23,14 +23,18 @@ class appBluePrint {
         })
     }
 
+    async #dataOfAPI(url) {
+        const apiUrl = await fetch(`${url}`);
+        const data = await apiUrl.json()
+        return data
+    }
+
     async coordinatesToLocationName() {
         try {
             const { latitude, longitude } = this.coords;
+            const data = await this.#dataOfAPI(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
 
-            const locationInfo = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
-            const data = await locationInfo.json()
             this.cityAndCountry = data;
-
             this.weatherData.apiPlaceName = (data.city + data.countryName).toLowerCase();
             this.weatherData.placeName = (data.city + ', ' + data.countryName);
 
@@ -69,31 +73,26 @@ class appBluePrint {
         this.weatherData.date = `${date.getDate()} ${months[date.getMonth()]}, ${date.getFullYear()} `;
     }
 
+    render(html) {
+        this.#parentEl.innerHTML = ''
+
+        this.#parentEl.insertAdjacentHTML('afterbegin', html);
+    }
+
     /**
      * @author Farzad Khan
      * @summary This Func gets data and then saves all the data with proper formate in an object called weatherData
      * @DataFetchedFrom weather.visualcrossing.com
      */
     async locationData() {
-        const countryInfo = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=days&key=${LOCATION__API__KEY}&contentType=json`)
-        const data = await countryInfo.json()
-
+        const data = await this.#dataOfAPI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=days&key=${LOCATION__API__KEY}&contentType=json`)
 
         this.weatherData.weekdays = data.days
         this.weatherData.temp = Math.trunc(data.days[0].temp)
-        this.weatherData.tempMax = Math.trunc((data.days[0].tempmax - 32) * 5 / 9) // (32°F − 32) × 5/9 = 0°C
-        this.weatherData.tempMin = Math.trunc((data.days[0].tempmin - 32) * 5 / 9) // (32°F − 32) × 5/9 = 0°C
-        this.weatherData.humidity = Math.trunc((data.days[0].humidity - 32) * 5 / 9)
-        console.log(this.weatherData.tempMax, this.weatherData.tempMin, this.weatherData.humidity)
-        // Data of section (Weekdays)
-        this.weatherData.day1 = this.daysManagement(1)
-        this.weatherData.day2 = this.daysManagement(2)
-        this.weatherData.day3 = this.daysManagement(3)
-        this.weatherData.day4 = this.daysManagement(4)
-        this.weatherData.day5 = this.daysManagement(5)
-        this.weatherData.day6 = this.daysManagement(6)
+        this.weatherData.tempMax = Math.trunc((data.days[0].tempmax - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
+        this.weatherData.tempMin = Math.trunc((data.days[0].tempmin - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
+        this.weatherData.humidity = Math.trunc((data.days[0].humidity - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
         console.log(this.weatherData)
-
     }
 
     async todayData() {
@@ -130,13 +129,17 @@ class appBluePrint {
             </div>
         `;
         this.#parentEl = document.querySelector('#current__city')
-        this.#parentEl.innerHTML = ''
-
-        this.#parentEl.insertAdjacentHTML('afterbegin', html);
+        this.render(html)
     }
 
     daysManagement(num, variable) {
-        const { date, temp } = { date: this.weatherData.weekdays[num].datetime, temp: this.weatherData.weekdays[num].temp }
+        const { date, temp } = {
+            date: this.weatherData.weekdays[num].datetime,
+            temp: Math.trunc((this.weatherData.weekdays[num].temp - 32) * 5 / 9)
+        }
+
+        if (!variable)
+            return date, temp
         if (variable === 'date')
             return date.slice(-5)
         if (variable === 'temp')
@@ -176,11 +179,18 @@ class appBluePrint {
                 <h3>${this.daysManagement(6, 'temp')}°C</h3>
             </div>
         `;
-        console.log(html)
         this.#parentEl = document.querySelector('.hourly')
-        this.#parentEl.innerHTML = ''
+        this.render(html)
+    }
 
-        this.#parentEl.insertAdjacentHTML('beforeend', html);
+    // Hourly section
+    async hourlyData() {
+        const data = await this.#dataOfAPI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=hours&key=${LOCATION__API__KEY}&contentType=json`)
+        this.weatherData.hours = []
+
+        data.days[0].hours.map(data => {
+            this.weatherData.hours.push(data.datetime)
+        })
 
     }
 
@@ -191,7 +201,7 @@ class appBluePrint {
             await this.locationData();
             this.todayData();
             this.weekDays();
-            console.log(this.daysManagement(1, 'date'))
+            await this.hourlyData()
         } catch (err) {
             console.error(err)
         }
@@ -199,4 +209,3 @@ class appBluePrint {
 }
 
 const WeatherApp = new appBluePrint();
-WeatherApp.init()
