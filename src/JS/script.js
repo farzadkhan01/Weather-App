@@ -92,7 +92,6 @@ class appBluePrint {
         this.weatherData.tempMax = Math.trunc((data.days[0].tempmax - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
         this.weatherData.tempMin = Math.trunc((data.days[0].tempmin - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
         this.weatherData.humidity = Math.trunc((data.days[0].humidity - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
-        console.log(this.weatherData)
     }
 
     async todayData() {
@@ -187,11 +186,93 @@ class appBluePrint {
     async hourlyData() {
         const data = await this.#dataOfAPI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=hours&key=${LOCATION__API__KEY}&contentType=json`)
         this.weatherData.hours = []
+        this.weatherData.temp = []
 
         data.days[0].hours.map(data => {
             this.weatherData.hours.push(data.datetime)
         })
 
+        data.days[0].hours.map(data => {
+            this.weatherData.temp.push(Math.trunc((data.temp - 32) * 5 / 9))
+        })
+
+        const actualHours = this.weatherData.hours.map(hour => hour.slice(0, 3))
+        this.#chartManagement(actualHours, this.weatherData.temp)
+    }
+
+    #chartManagement(labels, data) {
+        // chart information
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels,
+                datasets: [{
+                    label: 'Hourly Temp Status',
+                    data,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    }
+
+    // Sunrise, sunset, UV index, windindex
+    dayEvents() {
+        this.#parentEl = document.querySelector('#dayEvents')
+
+
+        const sunrise = `${this.weatherData.weekdays[0].sunrise.slice(1, 5)} AM`;
+        const sunset = `${Math.trunc(this.weatherData.weekdays[0].sunset.slice(0, 2) - 12) + this.weatherData.weekdays[0].sunset.slice(2, 5)} PM`;
+        const uvIndex = this.weatherData.weekdays[0].uvindex;
+        const windSpeed = this.weatherData.weekdays[0].windspeed + ' km/h';
+
+        const html = `
+            <div id="RISE" class="city-info">
+                    <div class="city-content">
+                        <h3>${sunrise}</h3>
+                        <h5>Sunrise</h5>
+                    </div>
+                    <div class="city-img">
+                        <img src="src/Imges/sunrise-removebg-preview.png" alt="Cloud">
+                    </div>
+                </div>
+            <div id="SET" class="city-info">
+                <div class="city-content">
+                    <h3>${sunset}</h3>
+                    <h5>Sunset</h5>
+                </div>
+                <div class="city-img">
+                    <img src="src/Imges/sunset.png" alt="Cloud">
+                </div>
+            </div>
+            <div id="UV" class="city-info">
+                <div class="city-content">
+                    <h3>${windSpeed}</h3>
+                    <h5>Windspeed</h5>
+                </div>
+                <div class="city-img">
+                     <i style="color: #eca914; font-size: 3rem;" class="fa-solid fa-wind"></i>
+                </div>
+            </div>
+            <div id="WIND" class="city-info">
+                <div class="city-content">
+                    <h3>${uvIndex}</h3>
+                    <h5>UV Index</h5>
+                </div>
+                <div class="city-img">
+                    <img src="src/Imges/cloud.png" alt="Cloud">
+                </div>
+            </div>
+        `;
+
+        this.render(html)
     }
 
     async init() {
@@ -202,6 +283,7 @@ class appBluePrint {
             this.todayData();
             this.weekDays();
             await this.hourlyData()
+            this.dayEvents()
         } catch (err) {
             console.error(err)
         }
