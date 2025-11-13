@@ -204,7 +204,7 @@
 
 
     .toogle {
-        padding: 2rem 2rem var(--grid-gap) 3rem;
+        padding: 2rem 2rem 0 3rem;
     }
 
     .toggle-bar a,
@@ -293,6 +293,13 @@
         font-weight: 400;
         margin: 0;
     }
+
+    .toggle-content {
+        width: calc(100vw - 32px);
+        top: 80px;
+        left: 16px;
+    }
+
 }
 
 /* ====================================================== */

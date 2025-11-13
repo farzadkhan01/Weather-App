@@ -13,6 +13,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="src/Style Sheet/style.css" />
     <link rel="stylesheet" href="src/Style Sheet/media.css" />
+    <script type="module" src="src/JS/functioality.js"></script>
     <script type="module" src="src/JS/script.js"></script>
 </head>
 
@@ -26,15 +27,73 @@
             </a>
         </div>
 
-        <div class="toggle-bar d-flex align-items-center justify-content-between ">
-            <div class="user-changer small-user-icon text-center search_active d-flex justify-content-between h-100">
-                <div class="d-flex align-items-center">
-                    <i class="fa-solid fa-user"></i>
+        <div class="toggle-info">
+            <div class="toggle-bar d-flex align-items-center justify-content-between ">
+                <div
+                    class="user-changer small-user-icon text-center search_active d-flex justify-content-between h-100">
+                    <div class="d-flex align-items-center">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
                 </div>
+                <a href="#" class="toggle__btn text-center">
+                    <i class="fa-solid fa-bars "></i>
+                </a>
             </div>
-            <a href="#" class="text-center">
-                <i class="fa-solid fa-bars "></i>
-            </a>
+
+            <div class="toggle-content height__full">
+
+                <div class="content" id="Content">
+                    <ul>
+                        <li>
+                            <a href="#" class="coloring">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                    <h5>Current day</h3>
+                                </div>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="coloring">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-temperature-quarter"></i>
+                                    <h5>Weekdays Info</h3>
+                                </div>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="coloring">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <h5>Map</h3>
+                                </div>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="coloring">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-calendar"></i>
+                                    <h5>Calendar</h3>
+                                </div>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="coloring">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-solid fa-download"></i>
+                                    <h5>Download Data</h3>
+                                </div>
+                                <i class="fa-solid fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
         </div>
     </div>
 
@@ -52,19 +111,29 @@
             <nav class="menu">
                 <ul>
                     <li>
-                        <a href="#"><i class="fa-solid fa-layer-group"></i></a>
+                        <a href="#">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa-solid fa-temperature-quarter"></i></a>
+                        <a href="#">
+                            <i class="fa-solid fa-temperature-quarter"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa-solid fa-location-dot"></i></a>
+                        <a href="#">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa-solid fa-calendar"></i></a>
+                        <a href="#">
+                            <i class="fa-solid fa-calendar"></i>
+                        </a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa-solid fa-download"></i></a>
+                        <a href="#">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
                     </li>
                 </ul>
             </nav>

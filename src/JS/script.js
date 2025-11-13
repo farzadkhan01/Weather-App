@@ -267,7 +267,7 @@ class appBluePrint {
                     <h5>UV Index</h5>
                 </div>
                 <div class="city-img">
-                    <img src="src/Imges/cloud.png" alt="Cloud">
+                   <img src="src/Imges/uv.png" alt="Cloud">
                 </div>
             </div>
         `;
