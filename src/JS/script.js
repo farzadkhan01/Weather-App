@@ -196,6 +196,8 @@ class appBluePrint {
             this.weatherData.temp.push(Math.trunc((data.temp - 32) * 5 / 9))
         })
 
+        console.log(this.weatherData)
+
         const actualHours = this.weatherData.hours.map(hour => hour.slice(0, 3))
         this.#chartManagement(actualHours, this.weatherData.temp)
     }
@@ -226,7 +228,6 @@ class appBluePrint {
     // Sunrise, sunset, UV index, windindex
     dayEvents() {
         this.#parentEl = document.querySelector('#dayEvents')
-
 
         const sunrise = `${this.weatherData.weekdays[0].sunrise.slice(1, 5)} AM`;
         const sunset = `${Math.trunc(this.weatherData.weekdays[0].sunset.slice(0, 2) - 12) + this.weatherData.weekdays[0].sunset.slice(2, 5)} PM`;

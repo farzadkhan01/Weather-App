@@ -4,25 +4,25 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SkySense Weather</title>
+    <title>Temperature </title>
     <link rel="icon" type="image/x-icon" href="src/Imges/bijli 2.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="src/Style Sheet/style.css" />
-    <link rel="stylesheet" href="src/Style Sheet/media.css" />
-    <script type="module" src="src/JS/functioality.js"></script>
-    <script type="module" src="src/JS/script.js"></script>
+    <link rel="stylesheet" href="../Style Sheet/style.css" />
+    <link rel="stylesheet" href="../Style Sheet/media.css" />
+    <link rel="stylesheet" href="../Style Sheet/temp.css" />
+    <script type="module" src="../JS/functioality.js"></script>
 </head>
 
 <body>
     <!-- Toggle -->
     <div id="Toggle" class="toogle d-none align-items-center justify-content-between">
         <div class="logo">
-            <a href="index.html" class="d-flex align-items-center justify-content-between">
-                <img src="src/Imges/bijli 2.png" alt="LOGO">
+            <a href="../../index.html" class="d-flex align-items-center justify-content-between">
+                <img src="../Imges/bijli 2.png" alt="LOGO">
                 <h6>SkySense</h6>
             </a>
         </div>
@@ -45,7 +45,7 @@
                 <div class="content" id="Content">
                     <ul>
                         <li>
-                            <a href="index.html" class="coloring">
+                            <a href="../../index.html" class="coloring">
                                 <div class="d-flex align-items-center gap-2">
                                     <i class="fa-solid fa-layer-group"></i>
                                     <h5>Current day</h3>
@@ -54,7 +54,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="src/Pages/temp.html" class="coloring">
+                            <a href="temp.html" class="coloring">
                                 <div class="d-flex align-items-center gap-2">
                                     <i class="fa-solid fa-temperature-quarter"></i>
                                     <h5>Weekdays Info</h3>
@@ -98,25 +98,25 @@
     </div>
 
 
-    <div class="dashboard">
+    <div class="temp--dashboard dashboard">
 
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="logo">
                 <a href="index.html">
-                    <img src="src/Imges/bijli 2.png" alt="LOGO">
+                    <img src="../Imges/bijli 2.png" alt="LOGO">
                     <h6>SkySense</h6>
                 </a>
             </div>
             <nav class="menu">
                 <ul>
                     <li>
-                        <a href="index.html">
+                        <a href="../../index.html">
                             <i class="fa-solid fa-layer-group"></i>
                         </a>
                     </li>
                     <li>
-                        <a href="src/Pages/temp.html">
+                        <a href="temp.html">
                             <i class="fa-solid fa-temperature-quarter"></i>
                         </a>
                     </li>
@@ -161,142 +161,23 @@
             </div>
         </section>
 
-        <!-- CURRENT CITY -->
-        <section id="current__city">
-            <div class="d-block d-xl-flex align-items-center justify-content-between">
 
-                <div class="today-weather ">
-                    <div class="img-review">
-                        <div class="location d-flex align-items-center justify-content-start rounded-pill">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <h6 class="current__location m-0">Swat</h6>
-                        </div>
-                        <div class="feels-like">
-                            <img src="src/Imges/cloud.png" alt="Cloud">
-                        </div>
-                    </div>
-                    <div class="today-info">
-                        <div class="info-content">
-                            <h3 class="today-day">Monday</h3>
-                            <h5 class="today-date">01 Nov, 2025</h3>
-                        </div>
-                        <div class="info-content">
-                            <h3 class="today-temp">26°C</h3>
-                            <h5 class="today-date">High: 27 Low: 10</h3>
-                        </div>
-                        <div class="info-content">
-                            <h3 class="today-temp">26°C</h3>
-                            <h5 class="today-date">Feels Like</h3>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="feels-like displaying">
-                    <img src="src/Imges/cloud.png" alt="Cloud">
-                </div> -->
-            </div>
+        <section id="Section1">
+
+            fdsafdsafasfdsf
         </section>
+        <section id="Section2">
 
-        <!-- HIGHLIGHTS -->
-        <section id="highlights">
-
-            <div class="section-title">
-                <h3>Today/Week</h3>
-            </div>
-
-            <div class="hourly">
-                <div class="hour-card">
-                    <h3>1PM</h3>
-                    <img src="src/Imges/cloud.png" alt="">
-                    <h3>16°C</h3>
-                </div>
-                <div class="hour-card">
-                    <h3>2PM</h3>
-                    <img src="src/Imges/cloud.png" alt="">
-                    <h3>20°C</h3>
-                </div>
-                <div class="hour-card">
-                    <h3>3PM</h3>
-                    <img src="src/Imges/cloud.png" alt="">
-                    <h3>20°C</h3>
-                </div>
-                <div class="hour-card">
-                    <h3>4PM</h3>
-                    <img src="src/Imges/cloud.png" alt="">
-                    <h3>19°C</h3>
-                </div>
-                <div class="hour-card">
-                    <h3>5PM</h3>
-                    <img src="src/Imges/cloud.png" alt="">
-                    <h3>19°C</h3>
-                </div>
-                <div class="hour-card">
-                    <h3>6PM</h3>
-                    <img src="src/Imges/cloud.png" alt="">
-                    <h3>18°C</h3>
-                </div>
-            </div>
-
+            fdsafdsafasfdsf
         </section>
+        <section id="Section3">
 
-        <!-- WEEKDAYS -->
-        <section id="weekdays">
-            <div class="section-title">
-                <h3>Chance of Rain</h3>
-            </div>
-
-            <div class="weekdays-card">
-                <div>
-                    <canvas id="myChart" width="100%"></canvas>
-                </div>
-            </div>
+            fdsafdsafasfdsf
         </section>
+        <section id="Section4">
 
-        <!-- OTHER CITIES -->
-        <section id="otherCities">
-            <div class="section-title">
-                <h3>Neighbour City</h3>
-            </div>
-
-            <div id="dayEvents" class="city-weather">
-                <div id="RISE" class="city-info">
-                    <div class="city-content">
-                        <h3>12°C</h3>
-                        <h5>USA</h5>
-                    </div>
-                    <div class="city-img">
-                        <img src="src/Imges/sunrise-removebg-preview.png" alt="Cloud">
-                    </div>
-                </div>
-                <div id="SET" class="city-info">
-                    <div class="city-content">
-                        <h3>12°C</h3>
-                        <h5>USA</h5>
-                    </div>
-                    <div class="city-img">
-                        <img src="src/Imges/sunset.png" alt="Cloud">
-                    </div>
-                </div>
-                <div id="UV" class="city-info">
-                    <div class="city-content">
-                        <h3>12°C</h3>
-                        <h5>USA</h5>
-                    </div>
-                    <div class="city-img">
-                        <i style="color: #eca914; font-size: 3rem;" class="fa-solid fa-wind"></i>
-                    </div>
-                </div>
-                <div id="WIND" class="city-info">
-                    <div class="city-content">
-                        <h3>12°C</h3>
-                        <h5>USA</h5>
-                    </div>
-                    <div class="city-img">
-                        <img src="src/Imges/uv.png" alt="Cloud">
-                    </div>
-                </div>
-            </div>
+            fdsafdsafasfdsf
         </section>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
