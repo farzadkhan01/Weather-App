@@ -17,6 +17,7 @@ class appBluePrint {
                     const { latitude, longitude } = pos.coords;
                     this.coords = { latitude, longitude };
                     resolve(this.coords)
+
                 },
                 err => reject(`Failed to get location: ${err.message}`)
             )
@@ -117,7 +118,7 @@ class appBluePrint {
                             <h5 class="today-date">High: ${this.weatherData.tempMax} Low: ${this.weatherData.tempMin}</h3>
                         </div>
                         <div class="info-content">
-                            <h3 class="today-temp">${this.weatherData.humidity}°C</h3>
+                            <h3 class="today-temp">${this.weatherData.humidity}%</h3>
                             <h5 class="today-date">Humidity</h3>
                         </div>
                     </div>
@@ -199,12 +200,13 @@ class appBluePrint {
         console.log(this.weatherData)
 
         const actualHours = this.weatherData.hours.map(hour => hour.slice(0, 3))
+        console.log(actualHours)
         this.#chartManagement(actualHours, this.weatherData.temp)
     }
 
     #chartManagement(labels, data) {
         // chart information
-        const ctx = document.getElementById('myChart');
+        const ctx = document.querySelectorAll('#myChart');
         new Chart(ctx, {
             type: 'line',
             data: {
@@ -235,7 +237,7 @@ class appBluePrint {
         const windSpeed = this.weatherData.weekdays[0].windspeed + ' km/h';
 
         const html = `
-            <div id="RISE" class="city-info">
+            <div id="RISE" class="col city-info">
                     <div class="city-content">
                         <h3>${sunrise}</h3>
                         <h5>Sunrise</h5>
@@ -244,7 +246,7 @@ class appBluePrint {
                         <img src="src/Imges/sunrise-removebg-preview.png" alt="Cloud">
                     </div>
                 </div>
-            <div id="SET" class="city-info">
+            <div id="SET" class="col city-info">
                 <div class="city-content">
                     <h3>${sunset}</h3>
                     <h5>Sunset</h5>
@@ -253,7 +255,7 @@ class appBluePrint {
                     <img src="src/Imges/sunset.png" alt="Cloud">
                 </div>
             </div>
-            <div id="UV" class="city-info">
+            <div id="UV" class="col city-info">
                 <div class="city-content">
                     <h3>${windSpeed}</h3>
                     <h5>Windspeed</h5>
@@ -262,7 +264,7 @@ class appBluePrint {
                      <i style="color: #eca914; font-size: 3rem;" class="fa-solid fa-wind"></i>
                 </div>
             </div>
-            <div id="WIND" class="city-info">
+            <div id="WIND" class="col city-info">
                 <div class="city-content">
                     <h3>${uvIndex}</h3>
                     <h5>UV Index</h5>

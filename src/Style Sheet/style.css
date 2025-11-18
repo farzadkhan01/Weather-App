@@ -337,12 +337,6 @@ aside {
 
 }
 
-.city-weather {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 315px);
-    gap: var(--grid-gap);
-}
-
 .city-info {
     display: flex;
     align-items: center;

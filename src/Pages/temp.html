@@ -13,10 +13,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../Style Sheet/style.css" />
-    <link rel="stylesheet" href="../Style Sheet/media.css" />
     <link rel="stylesheet" href="../Style Sheet/temp.css" />
+    <link rel="stylesheet" href="../Style Sheet/media.css" />
     <script type="module" src="../JS/functioality.js"></script>
-    <script type="module" src="../JS/script.js"></script>
 </head>
 
 <body>
@@ -152,6 +151,12 @@
             </div>
         </section>
 
+        <section id="sectionInfo">
+            <div class="section-name ">
+                <h2>Comming Days Information</h2>
+            </div>
+        </section>
+
         <!-- USER -->
         <section id="User">
             <div class="user-changer search_active d-flex justify-content-between h-100">
@@ -163,323 +168,444 @@
             </div>
         </section>
 
-        <section id="sectionInfo">
-            <div class="section-name ">
-                <h2>Comming Days Information</h2>
-            </div>
-        </section>
-
-
         <section id="Section1">
-            <div class="day-and-date ">
-                <div class="day-info">
+            <div class="row">
+                <div class=" col day-info">
                     <h2>Tuesday</h2>
                     <p>DESCRIPTION: <span class="day__discription">Its raining today</span></p>
                 </div>
-                <div class="day-image">
+                <div class=" col text-end day-image">
                     <img src="../Imges/sunrise-removebg-preview.png" alt="">
                 </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="weather-info">
-                <div class="temp1 temp weather-styling ">
+            <div class="row weather-info">
+
+                <div class=" col text-center temp1 temp weather-styling ">
                     <h4><span>Temp: </span>30°C</h4>
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-
-                <div class="feels__like1 feels__like weather-styling">
+                <div class=" col text-center feels__like1 feels__like weather-styling">
                     <h4><span>Feels Like: </span>30°C</h4>
 
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="wind__speed1 wind__speed weather-styling">
-                    <h4>30°C</h4>
-                    <h6>WindSpeed</h6>
-
+                <div class=" col text-center feels__like1 feels__like weather-styling">
+                    <h4><span>Other Data: </span> 30°C</h4>
+                    <h6>High: <span>40°C</span></h6>
+                    <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="sunrise1 sunrise weather-styling">
-                    <h4>06: 14 AM</h4>
-                    <h6>Sunrise</h6>
-                </div>
 
-                <div class="sunset1 sunset weather-styling border-0 p-0">
-                    <h4>05 : 38 PM</h4>
-                    <h6>Sunset</h6>
-                </div>
             </div>
 
             <div class="divider"></div>
-            <div class="temp-chart weekdays-card">
-                <canvas id="myChart" height="50%" width="100%"></canvas>
+
+            <div class="row mb-md-0">
+
+                <div class="col-12 col-md temp-chart weekdays-card">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+                <div class="divider d-md-none"></div>
+
+                <div class="row col-12 col-md justify-content-center">
+                    <div class="col sunset1 sunset weather-styling text-center ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="col sunset1 sunset weather-styling text-center border-0 p-0 ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>12%</h4>
+                        <h6>Humadity</h6>
+                    </div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>30°C</h4>
+                        <h6>WindSpeed</h6>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="Section2">
-            <div class="day-and-date ">
-                <div class="day-info">
-                    <h2>Wednesday</h2>
+            <div class="row">
+                <div class=" col day-info">
+                    <h2>Tuesday</h2>
                     <p>DESCRIPTION: <span class="day__discription">Its raining today</span></p>
                 </div>
-                <div class="day-image">
+                <div class=" col text-end day-image">
                     <img src="../Imges/sunrise-removebg-preview.png" alt="">
                 </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="weather-info">
-                <div class="temp2 temp weather-styling ">
+            <div class="row weather-info">
+
+                <div class=" col text-center temp1 temp weather-styling ">
                     <h4><span>Temp: </span>30°C</h4>
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-
-                <div class="feels__like2 feels__like weather-styling">
+                <div class=" col text-center feels__like1 feels__like weather-styling">
                     <h4><span>Feels Like: </span>30°C</h4>
 
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="wind__speed2 wind__speed weather-styling">
-                    <h4>30°C</h4>
-                    <h6>WindSpeed</h6>
-
+                <div class=" col text-center feels__like1 feels__like weather-styling">
+                    <h4><span>Other Data: </span> 30°C</h4>
+                    <h6>High: <span>40°C</span></h6>
+                    <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="sunrise2 sunrise weather-styling">
-                    <h4>06: 14 AM</h4>
-                    <h6>Sunrise</h6>
-                </div>
 
-                <div class="sunset2 sunset weather-styling border-0 p-0">
-                    <h4>05 : 38 PM</h4>
-                    <h6>Sunset</h6>
-                </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="temp-chart weekdays-card">
-                <canvas id="myChart" height="50%" width="100%"></canvas>
+            <div class="row mb-md-0">
+
+                <div class="col-12 col-md temp-chart weekdays-card">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+                <div class="divider d-md-none"></div>
+
+                <div class="row col-12 col-md justify-content-center">
+                    <div class="col sunset1 sunset weather-styling text-center ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="col sunset1 sunset weather-styling text-center border-0 p-0 ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>12%</h4>
+                        <h6>Humadity</h6>
+                    </div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>30°C</h4>
+                        <h6>WindSpeed</h6>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="Section3">
-            <div class="day-and-date ">
-                <div class="day-info">
-                    <h2>Thursday</h2>
+            <div class="row">
+                <div class=" col day-info">
+                    <h2>Tuesday</h2>
                     <p>DESCRIPTION: <span class="day__discription">Its raining today</span></p>
                 </div>
-                <div class="day-image">
+                <div class=" col text-end day-image">
                     <img src="../Imges/sunrise-removebg-preview.png" alt="">
                 </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="weather-info">
-                <div class="temp3 temp weather-styling ">
+            <div class="row weather-info">
+
+                <div class=" col text-center temp1 temp weather-styling ">
                     <h4><span>Temp: </span>30°C</h4>
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="feels__like3 feels__like weather-styling">
+                <div class=" col text-center feels__like1 feels__like weather-styling">
                     <h4><span>Feels Like: </span>30°C</h4>
 
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="wind__speed3 wind__speed weather-styling">
-                    <h4>30°C</h4>
-                    <h6>WindSpeed</h6>
-
+                <div class=" col text-center feels__like1 feels__like weather-styling">
+                    <h4><span>Other Data: </span> 30°C</h4>
+                    <h6>High: <span>40°C</span></h6>
+                    <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="sunrise3 sunrise weather-styling">
-                    <h4>06: 14 AM</h4>
-                    <h6>Sunrise</h6>
-                </div>
 
-                <div class="sunset3 sunset weather-styling border-0 p-0">
-                    <h4>05 : 38 PM</h4>
-                    <h6>Sunset</h6>
-                </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="temp-chart weekdays-card">
-                <canvas id="myChart" height="50%" width="100%"></canvas>
+            <div class="row mb-md-0">
+
+                <div class="col-12 col-md temp-chart weekdays-card">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+                <div class="divider d-md-none"></div>
+
+                <div class="row col-12 col-md justify-content-center">
+                    <div class="col sunset1 sunset weather-styling text-center ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="col sunset1 sunset weather-styling text-center border-0 p-0 ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>12%</h4>
+                        <h6>Humadity</h6>
+                    </div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>30°C</h4>
+                        <h6>WindSpeed</h6>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="Section4">
-            <div class="day-and-date ">
-                <div class="day-info">
-                    <h2>Friday</h2>
+            <div class="row">
+                <div class=" col day-info">
+                    <h2>Tuesday</h2>
                     <p>DESCRIPTION: <span class="day__discription">Its raining today</span></p>
                 </div>
-                <div class="day-image">
+                <div class=" col text-end day-image">
                     <img src="../Imges/sunrise-removebg-preview.png" alt="">
                 </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="weather-info">
-                <div class="temp4 temp weather-styling ">
+            <div class="row weather-info">
+
+                <div class=" col text-center temp1 temp weather-styling ">
                     <h4><span>Temp: </span>30°C</h4>
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-
-                <div class="feels__like4 feels__like weather-styling">
+                <div class=" col text-center feels__like1 feels__like weather-styling">
                     <h4><span>Feels Like: </span>30°C</h4>
 
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="wind__speed4 wind__speed weather-styling">
-                    <h4>30°C</h4>
-                    <h6>WindSpeed</h6>
-
+                <div class=" col text-center feels__like1 feels__like weather-styling">
+                    <h4><span>Other Data: </span> 30°C</h4>
+                    <h6>High: <span>40°C</span></h6>
+                    <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="sunrise4 sunrise weather-styling">
-                    <h4>06: 14 AM</h4>
-                    <h6>Sunrise</h6>
-                </div>
 
-                <div class="sunset4 sunset weather-styling border-0 p-0">
-                    <h4>05 : 38 PM</h4>
-                    <h6>Sunset</h6>
-                </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="temp-chart weekdays-card">
-                <canvas id="myChart" height="50%" width="100%"></canvas>
+            <div class="row mb-md-0">
+
+                <div class="col-12 col-md temp-chart weekdays-card">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+                <div class="divider d-md-none"></div>
+
+                <div class="row col-12 col-md justify-content-center">
+                    <div class="col sunset1 sunset weather-styling text-center ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="col sunset1 sunset weather-styling text-center border-0 p-0 ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>12%</h4>
+                        <h6>Humadity</h6>
+                    </div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>30°C</h4>
+                        <h6>WindSpeed</h6>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="Section5">
-            <div class="day-and-date ">
-                <div class="day-info">
-                    <h2>Saturday</h2>
+            <div class="row">
+                <div class=" col day-info">
+                    <h2>Tuesday</h2>
                     <p>DESCRIPTION: <span class="day__discription">Its raining today</span></p>
                 </div>
-                <div class="day-image">
+                <div class=" col text-end day-image">
                     <img src="../Imges/sunrise-removebg-preview.png" alt="">
                 </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="weather-info">
-                <div class="temp5 temp weather-styling ">
+            <div class="row weather-info">
+
+                <div class=" col text-center temp1 temp weather-styling ">
                     <h4><span>Temp: </span>30°C</h4>
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-
-                <div class="feels__like5 feels__like weather-styling">
+                <div class=" col text-center feels__like1 feels__like weather-styling">
                     <h4><span>Feels Like: </span>30°C</h4>
 
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="wind__speed5 wind__speed weather-styling">
-                    <h4>30°C</h4>
-                    <h6>WindSpeed</h6>
-
+                <div class=" col text-center feels__like1 feels__like weather-styling">
+                    <h4><span>Other Data: </span> 30°C</h4>
+                    <h6>High: <span>40°C</span></h6>
+                    <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="sunrise5 sunrise weather-styling">
-                    <h4>06: 14 AM</h4>
-                    <h6>Sunrise</h6>
-                </div>
 
-                <div class="sunset5 sunset weather-styling border-0 p-0">
-                    <h4>05 : 38 PM</h4>
-                    <h6>Sunset</h6>
-                </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="temp-chart weekdays-card">
-                <canvas id="myChart"></canvas>
+            <div class="row mb-md-0">
+
+                <div class="col-12 col-md temp-chart weekdays-card">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+                <div class="divider d-md-none"></div>
+
+                <div class="row col-12 col-md justify-content-center">
+                    <div class="col sunset1 sunset weather-styling text-center ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="col sunset1 sunset weather-styling text-center border-0 p-0 ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>12%</h4>
+                        <h6>Humadity</h6>
+                    </div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>30°C</h4>
+                        <h6>WindSpeed</h6>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="Section6">
-            <div class="day-and-date ">
-                <div class="day-info">
-                    <h2>Sunday</h2>
+            <div class="row">
+                <div class=" col day-info">
+                    <h2>Tuesday</h2>
                     <p>DESCRIPTION: <span class="day__discription">Its raining today</span></p>
                 </div>
-                <div class="day-image">
+                <div class=" col text-end day-image">
                     <img src="../Imges/sunrise-removebg-preview.png" alt="">
                 </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="weather-info">
-                <div class="temp6 temp weather-styling ">
+            <div class="row weather-info">
+
+                <div class=" col text-center temp1 temp weather-styling ">
                     <h4><span>Temp: </span>30°C</h4>
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-
-                <div class="feels__like6 feels__like weather-styling">
+                <div class=" col text-center feels__like1 feels__like weather-styling">
                     <h4><span>Feels Like: </span>30°C</h4>
 
                     <h6>High: <span>40°C</span></h6>
                     <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="wind__speed6 wind__speed weather-styling">
-                    <h4>30°C</h4>
-                    <h6>WindSpeed</h6>
-
+                <div class=" col text-center feels__like1 feels__like weather-styling">
+                    <h4><span>Other Data: </span> 30°C</h4>
+                    <h6>High: <span>40°C</span></h6>
+                    <h6>low: <span>20°C</span></h6>
                 </div>
 
-                <div class="sunrise6 sunrise weather-styling">
-                    <h4>06: 14 AM</h4>
-                    <h6>Sunrise</h6>
-                </div>
 
-                <div class="sunset6 sunset weather-styling border-0 p-0">
-                    <h4>05 : 38 PM</h4>
-                    <h6>Sunset</h6>
-                </div>
             </div>
 
             <div class="divider"></div>
 
-            <div class="temp-chart weekdays-card">
-                <canvas id="myChart" height="50%" width="100%"></canvas>
-            </div>
+            <div class="row mb-md-0">
 
+                <div class="col-12 col-md temp-chart weekdays-card">
+                    <canvas id="myChart2"></canvas>
+                </div>
+
+                <div class="divider d-md-none"></div>
+
+                <div class="row col-12 col-md justify-content-center">
+                    <div class="col sunset1 sunset weather-styling text-center ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="col sunset1 sunset weather-styling text-center border-0 p-0 ">
+                        <h4>05 : 38 PM</h4>
+                        <h6>Sunset</h6>
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>12%</h4>
+                        <h6>Humadity</h6>
+                    </div>
+
+                    <div class="col wind__speed1 wind__speed weather-styling border-0 p-0 text-center">
+                        <h4>30°C</h4>
+                        <h6>WindSpeed</h6>
+                    </div>
+                </div>
+            </div>
         </section>
+
     </div>
 </body>
 

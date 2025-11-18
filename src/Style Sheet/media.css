@@ -31,6 +31,20 @@
         ;
     }
 
+    .temp--dashboard.dashboard {
+        grid-template-columns: 7rem repeat(4, 1fr);
+        grid-template-rows: 4.5rem repeat(6, 1fr);
+        align-items: center;
+        grid-template-areas:
+            " aside     search   search     si       user "
+            " aside     s1       s1         s1      s1 "
+            " aside     s2       s2         s2      s2 "
+            " aside     s3       s3         s3      s3 "
+            " aside     s4       s4         s4      s4 "
+            " aside     s5       s5         s5      s5 "
+            " aside     s6       s6         s6      s6 ";
+    }
+
     .displaying {
         display: none;
     }
@@ -83,6 +97,27 @@
         ;
     }
 
+
+    .temp--dashboard.dashboard {
+        grid-template-columns: 7rem repeat(4, 1fr);
+        grid-template-rows: 4.5rem 2rem repeat(6, 1fr);
+        align-items: center;
+        grid-template-areas:
+            " aside     si       si         si      si "
+            " aside     search   search     user       user "
+            " aside     s1       s1         s1      s1 "
+            " aside     s2       s2         s2      s2 "
+            " aside     s3       s3         s3      s3 "
+            " aside     s4       s4         s4      s4 "
+            " aside     s5       s5         s5      s5 "
+            " aside     s6       s6         s6      s6 ";
+    }
+
+    .section-name h2 {
+        width: 100%;
+        text-align: center;
+    }
+
     .hourly {
         grid-template-columns: repeat(auto-fill, 62px);
     }
@@ -118,6 +153,19 @@
             "   aside       cities          cities          cities          cities          cities     "
             "   aside       cities          cities          cities          cities          cities     "
         ;
+    }
+
+    .temp-chart {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    #Section1 {
+        margin-top: 30px;
+    }
+
+    #sectionInfo {
+        margin-bottom: 30px;
     }
 
     aside {
@@ -160,7 +208,6 @@
 
 @media (max-width: 576px) {
 
-
     .dashboard {
         display: flex;
         flex-direction: column;
@@ -178,6 +225,29 @@
             " highlights    highlights highlights   cities      cities ";
         gap: var(--grid-gap);
         position: relative;
+    }
+
+    #Section1 {
+        margin-top: 0;
+    }
+
+    #sectionInfo {
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    #myChart2 {
+        width: 100%;
+    }
+
+    #Section1,
+    #Section2,
+    #Section3,
+    #Section4,
+    #Section5,
+    #Section6 {
+        padding: 1rem 1rem;
+        width: 100%;
     }
 
     #User {
@@ -236,6 +306,31 @@
 @media (max-width: 425px) {
     :root {
         --grid-gap: 20px;
+    }
+
+    .temp-chart {
+        width: 94% !important;
+        margin: auto;
+        height: 100% !important;
+    }
+
+    .section-name h2 {
+        font-size: 18px;
+    }
+
+    .weather-styling h4 span,
+    .weather-styling h6 {
+        font-size: 13px;
+    }
+
+    .weather-styling h6 span,
+    .weather-styling h4 {
+        font-size: 18px;
+    }
+
+    .day-info h2 {
+        font-size: 18px;
+        padding: 10px 20px 10px 10px;
     }
 
     .toogle {

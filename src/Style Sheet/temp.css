@@ -64,13 +64,6 @@
 }
 
 /* ================================================== */
-.day-and-date {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: var(--grid-gap);
-}
-
 .day-info h2 {
     font-size: 21px;
     background-color: var(--iconHover);
@@ -103,18 +96,6 @@
 
 
 /* Weather Information */
-.weather-info {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
-.weather-styling {
-    text-align: center;
-    padding-right: 18px;
-    border-right: 2px solid #0b0f19;
-}
-
 .weather-styling h4 {
     font-size: 28px;
     font-weight: 600;
@@ -135,7 +116,7 @@
     font-weight: 600;
 }
 
-.temp-chart canvas {
-    width: 100% !important;
-    height: 100% !important;
+.temp-chart {
+    width: 50%;
+    height: 50%;
 }
