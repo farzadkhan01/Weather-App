@@ -153,6 +153,7 @@
             "   aside       cities          cities          cities          cities          cities     "
             "   aside       cities          cities          cities          cities          cities     "
         ;
+        gap: 35px;
     }
 
     .temp-chart {

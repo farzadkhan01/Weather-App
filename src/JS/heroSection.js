@@ -1,100 +1,5 @@
-const LOCATION__API__KEY = 'QXSS9XCRCFTRTLPNRT53LKY6T';
-
-class appBluePrint {
-    #parentEl;
-
-    constructor() {
-        this.coords = null;
-        this.weatherData = {};
-        this.#currentDate()
-        this.init()
-    }
-
-    async getCurrentLocation() {
-        return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(
-                pos => {
-                    const { latitude, longitude } = pos.coords;
-                    this.coords = { latitude, longitude };
-                    resolve(this.coords)
-
-                },
-                err => reject(`Failed to get location: ${err.message}`)
-            )
-        })
-    }
-
-    async #dataOfAPI(url) {
-        const apiUrl = await fetch(`${url}`);
-        const data = await apiUrl.json()
-        return data
-    }
-
-    async coordinatesToLocationName() {
-        try {
-            const { latitude, longitude } = this.coords;
-            const data = await this.#dataOfAPI(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
-
-            this.cityAndCountry = data;
-            this.weatherData.apiPlaceName = (data.city + data.countryName).toLowerCase();
-            this.weatherData.placeName = (data.city + ', ' + data.countryName);
-
-        } catch (err) {
-            console.error('Error From Coords Convertor: ', err.message);
-        }
-    }
-
-    #currentDate() {
-        const weekDays = [
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thirsday',
-            'Friday',
-            'Saturday'
-        ]
-        const months = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'November',
-            'December',
-        ]
-        const date = new Date();
-        const day = weekDays[date.getDay()]
-        this.weatherData.day = day;
-        this.weatherData.date = `${date.getDate()} ${months[date.getMonth()]}, ${date.getFullYear()} `;
-    }
-
-    render(html) {
-        this.#parentEl.innerHTML = ''
-
-        this.#parentEl.insertAdjacentHTML('afterbegin', html);
-    }
-
-    /**
-     * @author Farzad Khan
-     * @summary This Func gets data and then saves all the data with proper formate in an object called weatherData
-     * @DataFetchedFrom weather.visualcrossing.com
-     */
-    async locationData() {
-        const data = await this.#dataOfAPI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=days&key=${LOCATION__API__KEY}&contentType=json`)
-
-        this.weatherData.weekdays = data.days
-        this.weatherData.temp = Math.trunc(data.days[0].temp)
-        this.weatherData.tempMax = Math.trunc((data.days[0].tempmax - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
-        this.weatherData.tempMin = Math.trunc((data.days[0].tempmin - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
-        this.weatherData.humidity = Math.trunc((data.days[0].humidity - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
-    }
-
+import { store } from "./store/store.js";
+class appBluePrint extends store {
     async todayData() {
         const html = `
             <div class="d-block d-xl-flex align-items-center justify-content-between">
@@ -128,7 +33,7 @@ class appBluePrint {
                 </div>-->
             </div>
         `;
-        this.#parentEl = document.querySelector('#current__city')
+        this.parentEl = document.querySelector('#current__city')
         this.render(html)
     }
 
@@ -179,57 +84,13 @@ class appBluePrint {
                 <h3>${this.daysManagement(6, 'temp')}°C</h3>
             </div>
         `;
-        this.#parentEl = document.querySelector('.hourly')
+        this.parentEl = document.querySelector('.hourly')
         this.render(html)
-    }
-
-    // Hourly section
-    async hourlyData() {
-        const data = await this.#dataOfAPI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=hours&key=${LOCATION__API__KEY}&contentType=json`)
-        this.weatherData.hours = []
-        this.weatherData.temp = []
-
-        data.days[0].hours.map(data => {
-            this.weatherData.hours.push(data.datetime)
-        })
-
-        data.days[0].hours.map(data => {
-            this.weatherData.temp.push(Math.trunc((data.temp - 32) * 5 / 9))
-        })
-
-        console.log(this.weatherData)
-
-        const actualHours = this.weatherData.hours.map(hour => hour.slice(0, 3))
-        console.log(actualHours)
-        this.#chartManagement(actualHours, this.weatherData.temp)
-    }
-
-    #chartManagement(labels, data) {
-        // chart information
-        const ctx = document.querySelectorAll('#myChart');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels,
-                datasets: [{
-                    label: 'Hourly Temp Status',
-                    data,
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: false
-                    }
-                }
-            }
-        });
     }
 
     // Sunrise, sunset, UV index, windindex
     dayEvents() {
-        this.#parentEl = document.querySelector('#dayEvents')
+        this.parentEl = document.querySelector('#dayEvents')
 
         const sunrise = `${this.weatherData.weekdays[0].sunrise.slice(1, 5)} AM`;
         const sunset = `${Math.trunc(this.weatherData.weekdays[0].sunset.slice(0, 2) - 12) + this.weatherData.weekdays[0].sunset.slice(2, 5)} PM`;
@@ -274,7 +135,6 @@ class appBluePrint {
                 </div>
             </div>
         `;
-
         this.render(html)
     }
 
@@ -283,8 +143,9 @@ class appBluePrint {
             await this.getCurrentLocation();
             await this.coordinatesToLocationName();
             await this.locationData();
-            this.todayData();
-            this.weekDays();
+            await this.currentDate();
+            await this.todayData();
+            await this.weekDays();
             await this.hourlyData()
             this.dayEvents()
         } catch (err) {
