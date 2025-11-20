@@ -7,7 +7,6 @@ export class store {
     constructor() {
         this.coords = null;
         this.weatherData = {};
-        this.init()
     }
 
     async getCurrentLocation() {

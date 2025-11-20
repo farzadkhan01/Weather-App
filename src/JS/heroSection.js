@@ -1,4 +1,5 @@
 import { store } from "./store/store.js";
+
 class appBluePrint extends store {
     async todayData() {
         const html = `
@@ -143,7 +144,7 @@ class appBluePrint extends store {
             await this.getCurrentLocation();
             await this.coordinatesToLocationName();
             await this.locationData();
-            await this.currentDate();
+            this.currentDate();
             await this.todayData();
             await this.weekDays();
             await this.hourlyData()
@@ -154,4 +155,4 @@ class appBluePrint extends store {
     }
 }
 
-const WeatherApp = new appBluePrint();
+export const heroSection = new appBluePrint();
