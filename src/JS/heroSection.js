@@ -1,14 +1,13 @@
-import { store } from "./store/store.js";
-
-class appBluePrint extends store {
-    async todayData() {
-        const html = `
+class appBluePrint {
+    async todayData(parentEl, weatherData) {
+        try {
+            const html = `
             <div class="d-block d-xl-flex align-items-center justify-content-between">
                 <div class="today-weather ">
                     <div class="img-review">
                         <div class="location d-flex align-items-center justify-content-start rounded-pill">
                             <i class="fa-solid fa-location-dot"></i>
-                            <h6 class="current__location m-0">${this.weatherData.placeName}</h6>
+                            <h6 class="current__location m-0">${weatherData.placeName}</h6>
                         </div>
                         <div class="feels-like">
                             <img src="src/Imges/cloud.png" alt="Cloud">
@@ -16,15 +15,15 @@ class appBluePrint extends store {
                     </div>
                     <div class="today-info">
                         <div class="info-content">
-                            <h3 class="today-day">${this.weatherData.day}</h3>
-                            <h5 class="today-date">${this.weatherData.date}</h3>
+                            <h3 class="today-day">${weatherData.day}</h3>
+                            <h5 class="today-date">${weatherData.date}</h3>
                         </div>
                         <div class="info-content">
-                            <h3 class="today-temp">${Math.trunc((this.weatherData.weekdays[0].temp - 32) * 5 / 9)}°C</h3>
-                            <h5 class="today-date">High: ${this.weatherData.tempMax} Low: ${this.weatherData.tempMin}</h3>
+                            <h3 class="today-temp">${Math.trunc((weatherData.weekdays[0].temp - 32) * 5 / 9)}°C</h3>
+                            <h5 class="today-date">High: ${weatherData.tempMax} Low: ${weatherData.tempMin}</h3>
                         </div>
                         <div class="info-content">
-                            <h3 class="today-temp">${this.weatherData.humidity}%</h3>
+                            <h3 class="today-temp">${weatherData.humidity}%</h3>
                             <h5 class="today-date">Humidity</h3>
                         </div>
                     </div>
@@ -34,14 +33,18 @@ class appBluePrint extends store {
                 </div>-->
             </div>
         `;
-        this.parentEl = document.querySelector('#current__city')
-        this.render(html)
+
+            parentEl = document.querySelector('#current__city')
+            return { parentEl, html };
+        } catch (err) {
+            console.error(err.message)
+        }
     }
 
-    daysManagement(num, variable) {
+    daysManagement(weatherData, num, variable) {
         const { date, temp } = {
-            date: this.weatherData.weekdays[num].datetime,
-            temp: Math.trunc((this.weatherData.weekdays[num].temp - 32) * 5 / 9)
+            date: weatherData.weekdays[num].datetime,
+            temp: Math.trunc((weatherData.weekdays[num].temp - 32) * 5 / 9)
         }
 
         if (!variable)
@@ -52,53 +55,57 @@ class appBluePrint extends store {
             return temp
     }
 
-    async weekDays() {
-        const html = `
+    async weekDays(parentEl, weatherData) {
+        try {
+            const html = `
             <div class="hour-card">
-                <h3>${this.daysManagement(1, 'date')}</h3>
+                <h3>${this.daysManagement(weatherData, 1, 'date')}</h3>
                 <img src="src/Imges/cloud.png" alt="">
-                <h3>${this.daysManagement(1, 'temp')}°C</h3>
+                <h3>${this.daysManagement(weatherData, 1, 'temp')}°C</h3>
             </div>
             <div class="hour-card">
-                <h3>${this.daysManagement(2, 'date')}</h3>
+                <h3>${this.daysManagement(weatherData, 2, 'date')}</h3>
                 <img src="src/Imges/cloud.png" alt="">
-                <h3>${this.daysManagement(2, 'temp')}°C</h3>
+                <h3>${this.daysManagement(weatherData, 2, 'temp')}°C</h3>
             </div>
             <div class="hour-card">
-                <h3>${this.daysManagement(3, 'date')}</h3>
+                <h3>${this.daysManagement(weatherData, 3, 'date')}</h3>
                 <img src="src/Imges/cloud.png" alt="">
-                <h3>${this.daysManagement(3, 'temp')}°C</h3>
+                <h3>${this.daysManagement(weatherData, 3, 'temp')}°C</h3>
             </div>
             <div class="hour-card">
-                <h3>${this.daysManagement(4, 'date')}</h3>
+                <h3>${this.daysManagement(weatherData, 4, 'date')}</h3>
                 <img src="src/Imges/cloud.png" alt="">
-                <h3>${this.daysManagement(4, 'temp')}°C</h3>
+                <h3>${this.daysManagement(weatherData, 4, 'temp')}°C</h3>
             </div>
             <div class="hour-card">
-                <h3>${this.daysManagement(5, 'date')}</h3>
+                <h3>${this.daysManagement(weatherData, 5, 'date')}</h3>
                 <img src="src/Imges/cloud.png" alt="">
-                <h3>${this.daysManagement(5, 'temp')}°C</h3>
+                <h3>${this.daysManagement(weatherData, 5, 'temp')}°C</h3>
             </div>
             <div class="hour-card">
-                <h3>${this.daysManagement(6, 'date')}</h3>
+                <h3>${this.daysManagement(weatherData, 6, 'date')}</h3>
                 <img src="src/Imges/cloud.png" alt="">
-                <h3>${this.daysManagement(6, 'temp')}°C</h3>
+                <h3>${this.daysManagement(weatherData, 6, 'temp')}°C</h3>
             </div>
         `;
-        this.parentEl = document.querySelector('.hourly')
-        this.render(html)
+
+            parentEl = document.querySelector('.hourly')
+            return { parentEl, html }
+        } catch (err) {
+            console.error(err.message)
+        }
     }
 
     // Sunrise, sunset, UV index, windindex
-    dayEvents() {
-        this.parentEl = document.querySelector('#dayEvents')
+    async dayEvents(parentEl, weatherData) {
+        try {
+            const sunrise = `${weatherData.weekdays[0].sunrise.slice(1, 5)} AM`;
+            const sunset = `${Math.trunc(weatherData.weekdays[0].sunset.slice(0, 2) - 12) + weatherData.weekdays[0].sunset.slice(2, 5)} PM`;
+            const uvIndex = weatherData.weekdays[0].uvindex;
+            const windSpeed = weatherData.weekdays[0].windspeed + ' km/h';
 
-        const sunrise = `${this.weatherData.weekdays[0].sunrise.slice(1, 5)} AM`;
-        const sunset = `${Math.trunc(this.weatherData.weekdays[0].sunset.slice(0, 2) - 12) + this.weatherData.weekdays[0].sunset.slice(2, 5)} PM`;
-        const uvIndex = this.weatherData.weekdays[0].uvindex;
-        const windSpeed = this.weatherData.weekdays[0].windspeed + ' km/h';
-
-        const html = `
+            const html = `
             <div id="RISE" class="col city-info">
                     <div class="city-content">
                         <h3>${sunrise}</h3>
@@ -136,21 +143,11 @@ class appBluePrint extends store {
                 </div>
             </div>
         `;
-        this.render(html)
-    }
 
-    async init() {
-        try {
-            await this.getCurrentLocation();
-            await this.coordinatesToLocationName();
-            await this.locationData();
-            this.currentDate();
-            await this.todayData();
-            await this.weekDays();
-            await this.hourlyData()
-            this.dayEvents()
+            parentEl = document.querySelector('#dayEvents')
+            return { parentEl, html }
         } catch (err) {
-            console.error(err)
+            console.error(err.message)
         }
     }
 }

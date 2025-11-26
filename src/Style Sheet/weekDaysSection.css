@@ -1,3 +1,7 @@
+:root {
+    --light-color: #dddd;
+}
+
 .temp--dashboard {
     grid-template-columns: 7rem repeat(4, 1fr);
     grid-template-rows: 4.5rem repeat(3, 1fr);
@@ -98,27 +102,32 @@
 
 
 /* Weather Information */
-.weather-styling h4 {
-    font-size: 28px;
-    font-weight: 600;
-    margin-bottom: 10px;
-}
-
-.weather-styling h4 span {
-    font-size: 18px;
-    font-weight: 400;
-}
-
+.weather-styling h4,
 .weather-styling h6 {
-    font-size: 18px;
-    font-weight: 400;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 18px;
 }
 
+.weather-styling h4,
+.weather-styling h6 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column-reverse;
+}
+
+.weather-styling h4 span,
 .weather-styling h6 span {
-    font-weight: 600;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--light-color);
 }
 
 .temp-chart {
-    width: 50%;
+    width: 100%;
     height: 50%;
+    margin: 15px 0;
+    margin-right: 20px;
+
 }

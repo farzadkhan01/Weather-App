@@ -1,12 +1,13 @@
 
 const LOCATION__API__KEY = 'QXSS9XCRCFTRTLPNRT53LKY6T';
 
-export class store {
+export class storeData {
     parentEl;
 
     constructor() {
         this.coords = null;
         this.weatherData = {};
+        // this.init();
     }
 
     async getCurrentLocation() {
@@ -74,60 +75,64 @@ export class store {
         this.weatherData.date = `${date.getDate()} ${months[date.getMonth()]}, ${date.getFullYear()} `;
     }
 
+    render(parentEl, html) {
 
-    render(html) {
-        this.parentEl.innerHTML = ''
+        parentEl.innerHTML = ''
 
-        this.parentEl.insertAdjacentHTML('afterbegin', html);
+        parentEl.insertAdjacentHTML('afterbegin', html);
     }
 
-    #chartManagement(labels, data) {
-        // chart information
-        const ctx = document.querySelectorAll('#myChart');
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels,
-                datasets: [{
-                    label: 'Hourly Temp Status',
-                    data,
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: false
-                    }
-                }
+    async addingHourData(hour, data, number) {
+        try {
+
+            if (hour === 'h') {
+                data.weekdays[number].hours.map(data => {
+                    this.weatherData.dayHours.push(data.datetime)
+                })
+
+                const h = this.weatherData.dayHours;
+                return h;
             }
-        });
+
+            if (hour === 't') {
+                data.weekdays[number].hours.map(data => {
+                    this.weatherData.temp.push(Math.trunc((data.temp - 32) * 5 / 9))
+                })
+
+                const t = this.weatherData.temp;
+                return t;
+            }
+
+        } catch (error) {
+            console.error(error)
+        }
+
     }
 
     // Hourly section
     async hourlyData() {
-        const data = await this.dataOfAPI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=hours&key=${LOCATION__API__KEY}&contentType=json`)
-        this.weatherData.hours = []
-        this.weatherData.temp = []
+        try {
+            const data = await this.dataOfAPI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=hours&key=${LOCATION__API__KEY}&contentType=json`);
+            this.weatherData.weekdays = data.days;
+            this.weatherData.dayHours = [];
+            this.weatherData.temp = [];
 
-        data.days[0].hours.map(data => {
-            this.weatherData.hours.push(data.datetime)
-        })
+            await this.addingHourData('h', this.weatherData, 0)
+            await this.addingHourData('t', this.weatherData, 0)
 
-        data.days[0].hours.map(data => {
-            this.weatherData.temp.push(Math.trunc((data.temp - 32) * 5 / 9))
-        })
+            const actualHours = this.weatherData.dayHours.map(hour => hour.slice(0, 2))
 
-        console.log(this.weatherData)
+            this.chartManagement(actualHours, this.weatherData.temp)
 
-        const actualHours = this.weatherData.hours.map(hour => hour.slice(0, 3))
-        console.log(actualHours)
-        this.chartManagement(actualHours, this.weatherData.temp)
+        } catch (error) {
+            console.error(error.message)
+        }
     }
 
-    chartManagement(labels, data) {
+    chartManagement(labels, data, number = '') {
+
         // chart information
-        const ctx = document.querySelectorAll('#myChart');
+        const ctx = document.querySelectorAll(`#myChart${number}`);
         new Chart(ctx, {
             type: 'line',
             data: {
@@ -150,16 +155,30 @@ export class store {
 
     /**
      * @author Farzad Khan
-     * @summary This Func gets data and then saves all the data with proper formate in an object called weatherData
+     * @Functionality This Func gets data and then saves all the data with proper formate in an object called weatherData
      * @DataFetchedFrom weather.visualcrossing.com
      */
     async locationData() {
         const data = await this.dataOfAPI(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${this.weatherData.apiPlaceName}?unitGroup=us&include=days&key=${LOCATION__API__KEY}&contentType=json`)
 
-        this.weatherData.weekdays = data.days
+        // this.weatherData.weekdays = data.days
         this.weatherData.temp = Math.trunc(data.days[0].temp)
         this.weatherData.tempMax = Math.trunc((data.days[0].tempmax - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
         this.weatherData.tempMin = Math.trunc((data.days[0].tempmin - 32) * 5 / 9); // (32°F − 32) × 5/9 = 0°C
         this.weatherData.humidity = Math.trunc(data.days[0].humidity); // (32°F − 32) × 5/9 = 0°C
     }
+
+    async init() {
+        try {
+            await this.getCurrentLocation();
+            await this.coordinatesToLocationName();
+            await this.locationData();
+            this.currentDate();
+            await this.hourlyData()
+        } catch (err) {
+            console.log(err.message)
+        }
+    }
 }
+
+export const store = new storeData();
