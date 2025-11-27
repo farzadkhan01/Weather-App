@@ -1,8 +1,13 @@
-import { store } from "./store/store.js";
+import { store, LOCATION__API__KEY } from "./store/store.js";
 import { heroSection } from "./heroSection.js";
 import { weekDaysSection } from "./weekDaysSection.js";
+import { map } from "./map.js";
 
 class controllerInfo {
+
+    constructor() {
+        this.mapPage()
+    }
 
     async storeData() {
         try {
@@ -71,13 +76,19 @@ class controllerInfo {
         }
     }
 
+    async mapPage() {
+
+    }
+
     async init() {
         try {
             await this.storeData();
 
-            this.heroSection();
+            // this.heroSection();
 
-            this.weekDaysSection()
+            // this.weekDaysSection();
+
+            await map.mapEditing(store.coords)
 
         } catch (err) {
 

@@ -1,0 +1,76 @@
+:root {
+    --light-color: #dddd;
+}
+
+.map-dashboard.dashboard {
+    grid-template-columns: 7rem repeat(4, 1fr);
+    grid-template-rows: 4rem 1fr;
+    grid-template-areas:
+        " aside     search      search      si      user        user "
+        " aside     mp          mp          mp      mp          mp   "
+        " aside     mp          mp          mp      mp          mp   ";
+    height: 100vh;
+}
+
+#Map {
+    grid-area: mp;
+    background-color: var(--sections-background);
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+#sectionInfo {
+    grid-area: si;
+}
+
+.toggle-content {
+    width: calc(100vw - 32px);
+    top: 80px;
+    left: 16px;
+    z-index: 50000;
+}
+
+#User,
+.search {
+    height: 4rem;
+}
+
+.section-name h2 {
+    font-size: 22px;
+    background-color: var(--iconHover);
+    width: max-content;
+    padding: 15px 25px;
+    border-radius: 50rem;
+    margin: 0;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+    background-color: var(--sections-background);
+}
+
+.leaflet-bottom {
+    display: none;
+    bottom: 0;
+}
+
+@media (max-width: 576px) {
+
+    .map-dashboard.dashboard {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 4rem 4rem 1fr;
+        grid-template-areas:
+            " search    "
+            " si        "
+            " mp        "
+            " mp        ";
+        height: calc(100vh - 3rem);
+    }
+
+    #User,
+    .search {
+        width: 100%;
+    }
+}

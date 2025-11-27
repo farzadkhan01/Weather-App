@@ -1,5 +1,5 @@
 
-const LOCATION__API__KEY = 'QXSS9XCRCFTRTLPNRT53LKY6T';
+export const LOCATION__API__KEY = 'QXSS9XCRCFTRTLPNRT53LKY6T';
 
 export class storeData {
     parentEl;
